@@ -1,0 +1,30 @@
+class Profesor {
+  int? Dni;
+  String? nombre;
+  double? SueldoBruto;
+
+  Profesor.datos(this.Dni, this.nombre);
+  Profesor.sueldo(this.SueldoBruto);
+
+  double calcularSueldoNeto() {
+    if (SueldoBruto == null) return 0.0;
+    return SueldoBruto! * 0.92;
+  }
+
+  @override
+  String toString() {
+    return 'Profesor: $nombre, DNI: $Dni, Sueldo Bruto: $SueldoBruto, Sueldo Neto: ${calcularSueldoNeto()}';
+  }
+}
+
+void main() {
+  Profesor p1 = Profesor.datos(60430026, 'Kenny');
+  p1.SueldoBruto = 3000;
+
+  Profesor p2 = Profesor.sueldo(5000);
+  p2.Dni = 80206040;
+  p2.nombre = 'Carlos';
+
+  print(p1.toString());
+  print(p2.toString());
+}
